@@ -1,3 +1,3 @@
-NOTE: just messing around with urllib2, this probably doesn't really work
+NOTE: this probably doesn't really work.  Just trying out Python's [urllib2](http://docs.python.org/2/library/urllib2.html)...
 
-The idea is to use regex to return the latest artist who has received Best New Album from Pitchfork
+The idea is to use regex to return the latest artist who has received Best New Album from [Pitchfork](http://pitchfork.com)
