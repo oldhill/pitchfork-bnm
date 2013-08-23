@@ -1,25 +1,46 @@
 #!/usr/bin/python
 
-# return name of lastest best new music on pitchfork
+# Gets stuff from Pitchfork's awesome 'Best New Music' section
+# Note: this is literally just regexing the HTML... so may not even work anymore!
+# This is not written by, or affiliated with Pitchfork at all
 
 import urllib2
 import re
 
-def main():
-  
+
+def GetPitchforkData():
+  # grab all the data...
   web_page = urllib2.urlopen('http://www.pitchfork.com/best')
   all_the_html = web_page.read()
+  # parse for Best New stuff...
+  demarcator = 'bnm-hub-features-1' # surrounds first row of best new things
+  relevant_block = re.findall(demarcator+'(.*?)'+demarcator, all_the_html)[0]
+  return relevant_block
 
-  # this string surrounds the first row of Best New things
-  demarcator = 'bnm-hub-features-1'
 
-  # grab the first one, this is the first Best New Album
-  relevant_block = re.findall(demarcator+'(.*?)'+demarcator, all_the_html)
-  first_block = relevant_block[0]
+def BestNewArtist():
+  relevant_block = GetPitchforkData()
+  relevant_artist = re.findall('h1>'+'(.*?)'+'</h1', relevant_block)
+  return relevant_artist[0]
 
-  # grab just the artist of the first Best New album
-  relevant_artist = re.findall('h1>'+'(.*?)'+'</h1', first_block)
-  print relevant_artist[0]
+
+def BestNewAlbum():
+  relevant_block = GetPitchforkData()
+  relevant_album = re.findall('h2>'+'(.*?)'+'</h2', relevant_block)
+  return relevant_album[0]
+  
+
+# Use this to test; it should print artist and album on command line
+def main():
+  
+  test_artist = BestNewArtist()
+  test_album = BestNewAlbum()
+  
+  print '\n>>>>>>>>>>>>>>>>>\n'
+  print test_artist
+  print test_album
+  print '\n>>>>>>>>>>>>>>>>>\n'
+
 
 if __name__ == '__main__':
     main()
