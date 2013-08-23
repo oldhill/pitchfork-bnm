@@ -1,5 +1,5 @@
-NOTE: this probably doesn't really work.  Just trying out Python's [urllib2](http://docs.python.org/2/library/urllib2.html)...
+A tiny Python library, providing functions to get the latest artist and album that have received Best New Music from [Pitchfork](http://pitchfork.com).  It's like an unofficial Python API!
 
-Uses regex to return the latest artist who has received Best New Album from [Pitchfork](http://pitchfork.com)
+Because sometimes you're just like "what's the latest best new music" right?!
 
-Because sometimes you're just like "who's the latest artist to receive best new album" right?!
+Note that this is regex'ing raw HTML, so may break if the structure of [this page](http://pitchfork.com/best) changes.
