@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # Gets stuff from Pitchfork's awesome 'Best New Music' section
-# Note: this is literally just regexing the HTML... so may not even work anymore!
+# Note: this is just regexing the HTML... so may stop working if page structure changes
 # This is not written by, or affiliated with Pitchfork at all
 
 import urllib2
